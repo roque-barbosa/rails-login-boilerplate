@@ -18,14 +18,15 @@ services:
     volumes:
       - app-storage:/rails/storage
     environment:
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV}
+      - PORT=${API_PORT}
       - DB_HOST=${DB_HOST}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     ports:
-      - "3000:3000"
+      - "${API_PORT}:${API_PORT}"
     depends_on:
       - db
   
